@@ -1,25 +1,98 @@
 # Tytuł
-## POZIOM 2
-###### POZIOM 6
+## Poziom 2
+### Poziom 3
+#### Poziom 4
 
-Lista zadań do wykonania:
+Lista zadań do wykonania 
 * todo 1
 * todo 2
   * todo 2.1
 
-1. Rozdział 1
-2. Rozdział 2  
-  2.1 Rozdział 2.1
+ 1. Rozdział 1
+ 2. Rozdział 2  
+    2.1 Rozdzial 2.1
 
-**Listring 1** -> pogrubienie  
-_Listring 2_ -> kursywa
+    **Listing 1**  
+    _Listing 2_  
+    **_Listing 3_**  
+    Kod......
 
-**_Listring 3_**
+    ```sql
+    SELECT * FROM osoba;
+    ```
 
-BLOK KODU
-```sql
-SELECT * FROM osoba;
-```
+use infs_rzepkad
+create table postac (
+id_postaci int primary key auto_increment,
+nazwa varchar(40),
+rodzaj enum("wiking","ptak","kobieta"),
+data_ur date,
+wiek int unsigned);
 
-Kod umieszczany liniowo. Polecenie `SELECT` oznacza wybranie danych z bazy.
+show tables;
 
+show create table postac;
+
+insert into postac values (default,"Bjorn","wiking","1700-10-23",323);
+
+insert into postac(nazwa, rodzaj, wiek, data_ur) values ("Dawid","wiking","30","1993-04-13");
+
+select * from
+postac;
+
+insert into postac values (default,"Drozd","ptak","1980-04-04",30);
+insert into postac values (default, "Tesciowa","kobieta","1968-09-05",88);
+
+select * from
+postac;
+
+create table walizka (
+id_walizki int primary key auto_increment,
+pojemnosc int unsigned,
+kolor enum("rozowy","czerwony","teczowy","zolty"),
+id_wlasciciela int,
+foreign key(id_wlasciciela) references postac(id_postaci) on delete cascade);
+
+show tables;
+
+show create table walizka;
+
+desc walizka;
+
+alter table walizka alter kolor set default "rozowy";
+
+show create table walizka;
+
+desc walizka;
+
+insert into walizka values(default,5,"rozowy",3);
+
+desc walizka;
+
+desc postac;
+
+select * from walizka;
+
+create table izba(
+adres_budynku varchar(40) not null,
+nazwa_izby varchar(40) not null,
+primary key(adres_budynku, nazwa_izby),
+metraz int unsigned,
+wlasciciel int null,
+foreign key(wlasciciel) references postac(id_postaci) on delete cascade);
+
+desc izba;
+
+select * from izba;
+
+alter table izba add kolor_izby enum("czarny","czerwony","niebieski")after metraz;
+
+alter table izba alter kolor_izby set default "czarny";
+
+desc izba;
+
+ALTER TABLE izba DROP COLUMN kolor_izby;
+
+desc izba;
+
+desc izba;
