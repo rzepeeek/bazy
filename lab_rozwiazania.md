@@ -34,7 +34,7 @@ show tables;
 
 show create table postac;
 
-insert into postac values (default,"Bjorn","wiking","1700-10-23",323);
+insert into postac values (default,"Bjorn","wiking","1861-11-09",147);
 
 insert into postac(nazwa, rodzaj, wiek, data_ur) values ("Dawid","wiking","30","1997-04-17");
 
