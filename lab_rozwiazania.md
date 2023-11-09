@@ -20,6 +20,7 @@ Lista zadań do wykonania
     ```sql
     SELECT * FROM osoba;
     ```
+LAB_04
 
 use infs_rzepkad
 create table postac (
