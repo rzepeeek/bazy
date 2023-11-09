@@ -21,7 +21,7 @@ Lista zadań do wykonania
     SELECT * FROM osoba;
     ```
 LAB_04
-
+```sql
 use infs_rzepkad
 create table postac (
 id_postaci int primary key auto_increment,
@@ -97,3 +97,4 @@ ALTER TABLE izba DROP COLUMN kolor_izby;
 desc izba;
 
 desc izba;
+```
