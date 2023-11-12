@@ -96,5 +96,18 @@ ALTER TABLE izba DROP COLUMN kolor_izby;
 
 desc izba;
 
-desc izba;
+create table przetwory (
+id_przetworu primary key int auto_increment,
+rok_produkcji date,
+id_wykonawcy,
+zawartosc VARCHAR(150),
+dodatek VARCHAR(100),
+id_konsumenta,
+foreign key(id_wykonawcy, id_konsumenta) references postac(id_postaci) on delete cascade);
+
+alter table przetwory alter rok_produkcji set deafult "1654";
+
+alter table przetwory alter dodatek set deafult "papryczka_chili";
+
+insert into przetwory values ("bigos_z_papryczka_chili", "1654", "default", "bigos", "papryczka_chili", "default"); 
 ```
