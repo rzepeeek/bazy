@@ -66,7 +66,9 @@ show create table walizka;
 
 desc walizka;
 
-insert into walizka values(default,5,"rozowy",3);
+insert into walizka values(default,15,default,"Bjorn");
+
+insert into walizka values(default, 20,default,"Tesciowa");
 
 desc walizka;
 
@@ -86,9 +88,11 @@ desc izba;
 
 select * from izba;
 
-alter table izba add kolor_izby enum("czarny","czerwony","niebieski")after metraz;
+alter table izba add kolor_izby enum("czarny","czerwony","niebieski") after metraz;
 
 alter table izba alter kolor_izby set default "czarny";
+
+insert into izba values ("kontowa_34","spizarnia","250",default);
 
 desc izba;
 
