@@ -1,0 +1,34 @@
+# zadanie 5
+# pkt 1
+INSERT INTO postac values();
+INSERT INTO postac values(
+(default, 'Asgard', 'wiking', '1678-08-12',340),
+(default, 'Khorad', 'wiking', '1864-03-22',170)
+(default, 'Asgard', 'wiking', '1678-08-12',340)#ZMIENIC
+(default, 'Asgard', 'wiking', '1678-08-12',340)#ZMEINIC
+(default, 'Asgard', 'wiking', '1678-08-12',340)#ZMIENIC
+;
+# pkt 2
+create table statek (
+nazwa_statku primary key varchar(50),
+rodzaj_statku 
+data_wodownania date,
+max_ladownosc unsigned);
+# pkt 3
+insert into statek values
+insert into statek values
+# pkt 4
+alter table postac add funckje varchar(150);
+# pkt 5
+update postac set funckja ... where ...
+# pkt 6
+# krok 1 dodanie odpowiedniej kolumny dla klucza obcego
+alter table postac add column statek varchar(50) default null; #MOZNA BEZ COLUMN
+# krok 2 - dodanie kluczba obecego 
+alter table postac add foreign key (statek) references statek(nazwa_statku) on delete set null;
+# pkt 7
+update postac set statek=... where...;
+# pkt 8
+delete from izba where ...;
+# pkt 9
+drop table izba;
