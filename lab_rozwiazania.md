@@ -107,7 +107,7 @@ id_wykonawcy,
 zawartosc VARCHAR(150),
 dodatek VARCHAR(100),
 id_konsumenta,
-foreign key(id_wykonawcy, id_konsumenta) references postac(id_postaci) on delete cascade);
+foreign key(id_wykonawcy, id_konsumenta) references postac(id_postaci));
 
 alter table przetwory alter rok_produkcji set deafult "1654";
 
