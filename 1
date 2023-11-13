@@ -1,12 +1,9 @@
-# zadanie 5
-# pkt 1
-INSERT INTO postac values();
 INSERT INTO postac values(
 (default, 'Asgard', 'wiking', '1678-08-12',340),
 (default, 'Khorad', 'wiking', '1864-03-22',170)
-(default, 'Asgard', 'wiking', '1678-08-12',340)#ZMIENIC
-(default, 'Asgard', 'wiking', '1678-08-12',340)#ZMEINIC
-(default, 'Asgard', 'wiking', '1678-08-12',340)#ZMIENIC
+(default, 'Asgard', 'wiking', '1742-01-09',192)
+(default, 'Asgard', 'wiking', '1508-10-17',251)
+(default, 'Asgard', 'wiking', '1597-05-15',475)
 ;
 # pkt 2
 create table statek (
@@ -32,3 +29,53 @@ update postac set statek=... where...;
 delete from izba where ...;
 # pkt 9
 drop table izba;
+
+#zmaina nazwy statku
+alter table statek change nazwa_statku varchar(50);
+
+####################################
+
+# pkt 1
+INSERT INTO postac values(
+('default', 'Asgard', 'wiking', '1678-08-12',340)
+('default', 'Khorad', 'wiking', '1864-03-22',170)
+('default', 'Asgard', 'wiking', '1742-01-09',192)
+('default', 'Asgard', 'wiking', '1508-10-17',251)
+('default', 'Asgard', 'wiking', '1597-05-15',475)
+);
+
+# pkt 2
+create table statek (
+nazwa_statku varchar(50) primary key,
+rodzaj_statku enum("wioslowy","zaglowy","o_napedzie_mechanicznym"),
+data_wodowania date,
+max_ladownosc int unsigned);
+
+# pkt 3
+INSERT INTO statek values ("Jager",'o_napedzie_mechanicznym','1919-05-14',default);
+INSERT INTO statek values ("galon","zaglowy","2013-04-15",default);
+# pkt 4
+alter table postac add funckje varchar(150);
+
+# pkt 5
+update postac set funckja 'kapitan' where=(id_postaci) = 1;
+
+# pkt 6
+alter table postac add column statek varchar(50) default null;
+alter table postac add foreign key(statek) references statek(nazwa_statku) on delete set null;
+ 
+# pkt 7
+update postac set statek=Drozd where 
+
+# pkt 8
+delete from izba where=(kolor_izby) = "czarny";
+
+# pkt 9
+drop table izba;
+
+
+
+
+
+
+
