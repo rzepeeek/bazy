@@ -58,7 +58,7 @@ INSERT INTO statek values ("galon","zaglowy","2013-04-15",default);
 alter table postac add funckje varchar(150);
 
 # pkt 5
-update postac set funckja 'kapitan' where=(id_postaci) = 1;
+update postac set funckja='kapitan' where id_postaci="1";
 
 # pkt 6
 alter table postac add column statek varchar(50) default null;
@@ -72,6 +72,35 @@ delete from izba where=(kolor_izby) = "czarny";
 
 # pkt 9
 drop table izba;
+
+# LAB_05
+
+# CICHA WODA
+# zadanie 1, pkt a
+select * from postac where rodzaj='wiking'
+select * from postac where rodzaj='wiking' order by wiek DESC;
+
+delete from postac where id_postaci in (5, 4);
+
+# pkt b
+SET foreign_key_checks = 1;
+alter table postac drop primary key;
+# problem 1 - atrybut auto_incerement
+alter table postac change id_postaci id_postaci int;
+# alter table ... change nazwa_kolumny nowa_nazwa + definicja;
+alter table postac modify id_postaci int;
+# alter table ... modify nazwa_kolumny + nowa_definicja;
+
+# krok 1 - usunięcie kluczy obcych, które łączą się z kolumną id_postaci
+# tabela: walizka, przetwory
+alter table walizka drop foreign key walizka_ibfk_1;
+# krok 2 - pozybice sie atrybuty auto_increment
+# krok 3 - usuniecie klucza glownego
+alter table postac drop primary key;
+
+show create table postac;
+
+
 
 
 
