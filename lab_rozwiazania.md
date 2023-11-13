@@ -113,5 +113,5 @@ alter table przetwory alter rok_produkcji set deafult "1654";
 
 alter table przetwory alter dodatek set deafult "papryczka_chili";
 
-insert into przetwory(zawartosc) values ("bigos_z_papryczkami_chili);
+insert into przetwory(id_wykonacy,zawartosc,id_konsumenta) values ("1","bigos_z_papryczkami_chili,"3");
 ```
