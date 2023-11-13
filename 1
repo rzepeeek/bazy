@@ -100,6 +100,33 @@ alter table postac drop primary key;
 
 show create table postac;
 
+# zadanie 2, pkt a
+# dodanie kolumny jako pierwszej na liscie w tabeli postac
+# dodanie kolumny z nowym kluczem glownym na tabeli z danymi
+# prawdopodobienie sie nie powiedzie - wartosc null dla calej
+# kolumny nie sa przeciez unikalne, a to warunek klucza glownego
+alter table postac add pesel char(11) first;
+# aktulizacja danych w tabeli postac
+update postac set pesel='177638746352' where id_postaci=1;
+select * from postac;
+
+update postac set pesel='177638746352'+ id_postaci;
+# dodanie primary key do tabeli postac
+alter table postac add primary key(pesel);
+
+# pkt b i c
+# krok 1 - dodanie nowego rodzaju postaci
+alter table postac modify
+rodzaj enum('wiking','ptak','kobieta','syrena');
+# krok 2 - dodanie Gertrudy 
+insert into postac values 
+
+
+
+
+
+
+
 
 
 
