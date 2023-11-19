@@ -5,7 +5,8 @@ LAB 05
 select * from postac where rodzaj='wiking'
 select * from postac where rodzaj='wiking' order by wiek DESC;
 
-delete from postac where id_postaci in (5, 4);
+delete from postac where id_postaci = '4';
+delete from postac where id_postaci = '5';
 
 # pkt b
 SET foreign_key_checks = 1;
