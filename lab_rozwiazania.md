@@ -20,7 +20,7 @@ Lista zadań do wykonania
     ```sql
     SELECT * FROM osoba;
     ```
-LAB
+LAB 4
 ```sql
 
 show create table nazwa_tabeli;
@@ -86,4 +86,49 @@ foreign key(id_wykonawcy, id_konsumenta) references postac(id_postaci));
 alter table przetwory alter rok_produkcji set deafult "1654";
 alter table przetwory alter dodatek set deafult "papryczka_chili";
 insert into przetwory(id_wykonacy,zawartosc,id_konsumenta) values ("1","bigos_z_papryczkami_chili,"3");
+
+//zad 5
+
+insert into postac (nazwa,rodzaj,data_ur,wiek) values
+('Asgard','wiking','1678-08-12','340'),
+('Ragnar','wiking','1754-06-11','145'),
+('Dziadek mroz','wiking','1821-09-09','140'),
+('Babka mroz','wiking','1848-01-01','121'),
+('Harnold','wiking','1941-10-11',91');
+
+create table statek
+(nazwa_statku VARCHAR(40),
+rodzaj_statku enum('wioslowy','zaglowy','o_napedzie_mechanicznym),
+data_wodowanie DATE,
+max_ladownosc INT unsigned,
+primary key(nazwa_statku));
+
+INSERT INTO statek values ("Jager",'o_napedzie_mechanicznym','1919-05-14',default);
+INSERT INTO statek values ("galon","zaglowy","2013-04-15",default);
+
+alter table postac add funckje varchar(150);
+
+alter table postac add column statek varchar(50) default null;
+alter table postac add foreign key(statek) references statek(nazwa_statku) on delete set null;
+
+update postac set nazwa_statku = 'Grzyb' WHERE id_postaci = 1;
+
+update postac set nazwa_statku = 'kret' WHERE id_postaci = 2;
+
+update postac set nazwa_statku = 'ziemnior' WHERE id_postaci = 3;
+
+update postac set nazwa_statku = 'Grzyb' WHERE id_postaci = 4;
+
+update postac set nazwa_statku = 'Grzyb' WHERE id_postaci = 5;
+
+update postac set nazwa_statku = 'kret' WHERE id_postaci = 6;
+
+update postac set nazwa_statku = 'ziemnior' WHERE id_postaci = 7;
+
+update postac set nazwa_statku = 'kret' WHERE id_postaci = 8;
+
+delete from izba where=(kolor_izby) = "czarny";
+
+drop table izba;
+
 ```
