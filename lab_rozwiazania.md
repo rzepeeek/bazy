@@ -22,7 +22,7 @@ Lista zadań do wykonania
     ```
 LAB_04
 ```sql
-use infs_rzepkad
+**Listing 1** ZAD 1
 create table postac (
 id_postaci int primary key auto_increment,
 nazwa varchar(40),
