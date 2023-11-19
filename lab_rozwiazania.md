@@ -86,7 +86,8 @@ foreign key(id_wykonawcy, id_konsumenta) references postac(id_postaci));
 alter table przetwory alter rok_produkcji set deafult "1654";
 alter table przetwory alter dodatek set deafult "papryczka_chili";
 insert into przetwory(id_wykonacy,zawartosc,id_konsumenta) values ("1","bigos_z_papryczkami_chili,"3");
-
+```
+```sql
 //zad 5
 
 insert into postac (nazwa,rodzaj,data_ur,wiek) values
