@@ -1,5 +1,6 @@
 LAB 05
 ```sql
+
 # CICHA WODA
 # zadanie 1, pkt a
 select * from postac where rodzaj='wiking'
