@@ -20,9 +20,16 @@ Lista zadań do wykonania
     ```sql
     SELECT * FROM osoba;
     ```
-LAB_04
+LAB
 ```sql
-**ZAD 1**
+
+show create table nazwa_tabeli;
+show tables;
+select * from nazwa_tabeli;
+desc nazwa_tabeli;
+
+//zad 1
+
 create table postac (
 id_postaci int primary key auto_increment,
 nazwa varchar(40),
@@ -30,22 +37,13 @@ rodzaj enum("wiking","ptak","kobieta"),
 data_ur date,
 wiek int unsigned);
 
-show tables;
-
-show create table postac;
-
-insert into postac values (default,"Bjorn","wiking","1861-11-09",147);
-
 insert into postac(nazwa, rodzaj, wiek, data_ur) values ("Dawid","wiking","30","1997-04-17");
 
-select * from
-postac;
-
+insert into postac values (default,"Bjorn","wiking","1861-11-09",147);
 insert into postac values (default,"Drozd","ptak","1980-04-04",30);
 insert into postac values (default, "Tesciowa","kobieta","1968-09-05",88);
 
-select * from
-postac;
+//zad 2
 
 create table walizka (
 id_walizki int primary key auto_increment,
@@ -54,27 +52,11 @@ kolor enum("rozowy","czerwony","teczowy","zolty"),
 id_wlasciciela int,
 foreign key(id_wlasciciela) references postac(id_postaci) on delete cascade);
 
-show tables;
-
-show create table walizka;
-
-desc walizka;
-
 alter table walizka alter kolor set default "rozowy";
-
-show create table walizka;
-
-desc walizka;
-
 insert into walizka values(default,15,default,"Bjorn");
-
 insert into walizka values(default, 20,default,"Tesciowa");
 
-desc walizka;
-
-desc postac;
-
-select * from walizka;
+//zad 3
 
 create table izba(
 adres_budynku varchar(40) not null,
@@ -84,21 +66,13 @@ metraz int unsigned,
 wlasciciel int null,
 foreign key(wlasciciel) references postac(id_postaci) on delete cascade);
 
-desc izba;
-
-select * from izba;
-
 alter table izba add kolor_izby enum("czarny","czerwony","niebieski") after metraz;
-
 alter table izba alter kolor_izby set default "czarny";
-
-insert into izba values ("kontowa_34","spizarnia","250",default);
-
-desc izba;
+insert into izba values ("kontowa 34","spizarnia","250",default);
 
 ALTER TABLE izba DROP COLUMN kolor_izby;
 
-desc izba;
+//zad 4
 
 create table przetwory (
 id_przetworu primary key int auto_increment,
@@ -110,8 +84,6 @@ id_konsumenta,
 foreign key(id_wykonawcy, id_konsumenta) references postac(id_postaci));
 
 alter table przetwory alter rok_produkcji set deafult "1654";
-
 alter table przetwory alter dodatek set deafult "papryczka_chili";
-
 insert into przetwory(id_wykonacy,zawartosc,id_konsumenta) values ("1","bigos_z_papryczkami_chili,"3");
 ```
