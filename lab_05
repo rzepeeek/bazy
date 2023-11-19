@@ -1,0 +1,63 @@
+LAB 05
+```sql
+# CICHA WODA
+# zadanie 1, pkt a
+select * from postac where rodzaj='wiking'
+select * from postac where rodzaj='wiking' order by wiek DESC;
+
+delete from postac where id_postaci in (5, 4);
+
+# pkt b
+SET foreign_key_checks = 1;
+alter table postac drop primary key;
+# problem 1 - atrybut auto_incerement
+alter table postac change id_postaci id_postaci int;
+# alter table ... change nazwa_kolumny nowa_nazwa + definicja;
+alter table postac modify id_postaci int;
+# alter table ... modify nazwa_kolumny + nowa_definicja;
+
+# krok 1 - usunięcie kluczy obcych, które łączą się z kolumną id_postaci
+# tabela: walizka, przetwory
+alter table walizka drop foreign key walizka_ibfk_1;
+# krok 2 - pozybice sie atrybuty auto_increment
+# krok 3 - usuniecie klucza glownego
+alter table postac drop primary key;
+
+show create table postac;
+
+# zadanie 2, pkt a
+# dodanie kolumny jako pierwszej na liscie w tabeli postac
+# dodanie kolumny z nowym kluczem glownym na tabeli z danymi
+# prawdopodobienie sie nie powiedzie - wartosc null dla calej
+# kolumny nie sa przeciez unikalne, a to warunek klucza glownego
+alter table postac add pesel char(11) first;
+# aktulizacja danych w tabeli postac
+update postac set pesel='177638746352' where id_postaci=1;
+select * from postac;
+
+update postac set pesel='177638746352'+ id_postaci;
+# dodanie primary key do tabeli postac
+alter table postac add primary key(pesel);
+
+# pkt b i c
+# krok 1 - dodanie nowego rodzaju postaci
+alter table postac modify
+rodzaj enum('wiking','ptak','kobieta','syrena');
+# krok 2 - dodanie Gertrudy 
+insert into postac values 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
