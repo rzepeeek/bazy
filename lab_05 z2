@@ -47,7 +47,68 @@ rodzaj enum('wiking','ptak','kobieta','syrena');
 # krok 2 - dodanie Gertrudy 
 insert into postac values 
 
+//zad 3 pkt a
 
+select * from postac
+where nazwa LIKE '_j%'; <-- przed 'j' tylko jeden znak a po j nieskonczenie
+
+update postac set statek='Jager'
+where nazwa LIKE '%a%'; <-- przed i po 'a' nieskonczenie
+
+# like '__-___'
+
+select * from postac where 
+nazwa regexp '.j'; <-- jeden znak przez 'j'
+
+select * from postac where 
+nazwa regexp 'a'; <-- przed i po 'a' nieskonczenie
+
+select * from postac where 
+nazwa regexp '[0-9]{2}-[0-9]{3}';
+# [0-9] - dowolna cyfra ze zbioru
+# [a-k] - litery od a do k
+# [aoiuey] - jeden ze znakow ([] - zbior)
+# {} - okreslenie krotnosci 
+# {n} - dokladnie n razy
+# {n,m} - co najmniej n razy, nie wiecej niz m razy
+# {n,} - co najmniej n razy
+
+//zad 3 pkt b
+
+# przyklad 1
+select * from statek
+where data_wodowania >= '1901-01-01'
+and data_wodowania <= '2000-12-31';
+# przyklad 2
+select * from statek
+where data_wodowania between '1919-05-14'
+and '2000-12-31';
+# przyklad 3
+select * from statek
+where year(data_wodowania) between 1901 and 2000;
+# month, day, hour, minute, second
+
+# select hour(now());
+# select now(); data i czas
+# select curdate(); tylko biezaca data
+
+update statek
+set max_ladownosc = 0.7 * max_ladownosc;
+
+# zadanie 3 pkt c
+
+alter table 
+postac modify wiek int unsigned check (wiek < 1000);
+# sprawdzamy czy instrukcja check jest w strukturze table
+show create table postac;
+select * from postac;
+# test dzialania check
+update postac set wiek=1000 where nazwa='Drozd';
+
+//zad 4
+
+alter table postac modify
+rodzaj enum('wiking','ptak','kobieta','syrena');
 
 
 
