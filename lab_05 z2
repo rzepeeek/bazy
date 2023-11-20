@@ -105,10 +105,65 @@ select * from postac;
 # test dzialania check
 update postac set wiek=1000 where nazwa='Drozd';
 
-//zad 4
+//zad 4 pkt a
 
 alter table postac modify
 rodzaj enum('wiking','ptak','kobieta','syrena');
+
+insert into postac (id_postaci,nazwa,rodzaj,data_ur,wiek,pesel) values ('4','Loko','waz','2014-05-07','12',' ');
+
+// zad 4 pkt b
+
+create table marynarz like postac;
+# nazwa nowej tabeli, nazwa istniejacej tabeli (pusta tabela)
+
+create table marynarz2 as select id_postaci, nazwa, statek
+from postac;
+# nazwa nowej tabeli, kolumny z tabeli (z danymi)
+
+insert into marynarz select * from postac;
+# jesli kolumny nie zmieniane to przeniesie wszystko
+
+create table marynarz2 as select * from postac where statek is not null;
+
+// zad 4 pkt c
+
+alter table marynarz add foreign key(statek) references statek(nazwa_statku);
+alter table marynarz add primary key(id_postaci) references postac(id_postaci);
+
+// zad 5 pkt a
+
+update postac
+set statek = null;
+
+// zad 5 pkt b
+
+delete from postac where nazwa='Asgard';
+
+// zad 5 pkt c
+
+alter table statek drop statek;
+
+// zad 5 pkt d
+
+drop table statek;
+
+// zad 5 pkt e
+
+create table zwierz (
+pola_id auto_increment primary key,
+nazwa VARCHAR(125),
+wiek INT);
+
+// zad 5 pkt f
+
+insert into postac select * from zwierz;
+
+
+
+
+
+
 
 
 
