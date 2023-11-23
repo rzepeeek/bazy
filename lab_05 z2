@@ -1,5 +1,5 @@
 LAB 5
-'''sql
+
 # CICHA WODA
 # zadanie 1, pkt a
 select * from postac where rodzaj='wiking'
@@ -159,7 +159,7 @@ wiek INT);
 
 insert into postac select * from zwierz;
 
-'''
+
 
 
 
