@@ -157,7 +157,7 @@ wiek INT);
 
 // zad 5 pkt f
 
-insert into postac select * from zwierz;
+insert into zwierz select * from postac;
 
 
 
