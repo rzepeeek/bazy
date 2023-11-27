@@ -1,5 +1,5 @@
 // zad 1 pkt a
-```sql
+
 # jezeli wybrana baza to baza imienna
 create table kreatura select * from
 wikingowie.kreatura;
@@ -68,9 +68,7 @@ between '2000' and '2007';
 
 // zad 5 pkt a
 
-select * from zasob
-where rodzaj='jedzenie', waga * '0.7' as masa_jedzenia
-and waga * '0.3' as masa_odpadow;
+select 'jedzenie', waga * 0.7 as masa_jedzenia, waga * 0.3 as masa_odpadow from zasob;
 
 // pkt b
 
@@ -81,6 +79,6 @@ where rodzaj is null;
 
 select * from zasob
 where nazwa LIKE 'Ba%' or '%os';
-```
+
 
 
