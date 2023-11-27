@@ -1,5 +1,5 @@
 // zad 1 pkt a
-
+```sql
 # jezeli wybrana baza to baza imienna
 create table kreatura select * from
 wikingowie.kreatura;
@@ -61,5 +61,26 @@ select distinct(rodzaj) from kreatura;
 select concat(idKreatury, 'to nazwa' , nazwa) from kreatura;
 
 // pkt c
+
+select nazwa, ilosc * waga as calkowita_waga 
+from zasob where year(datapozyskania)
+between '2000' and '2007';
+
+// zad 5 pkt a
+
+select * from zasob
+where rodzaj='jedzenie', waga * '0.7' as masa_jedzenia
+and waga * '0.3' as masa_odpadow;
+
+// pkt b
+
+select * from zasob
+where rodzaj is null;
+
+// pkt c
+
+select * from zasob
+where nazwa LIKE 'Ba%' or '%os';
+```
 
 
