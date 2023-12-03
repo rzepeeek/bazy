@@ -58,7 +58,8 @@ select distinct(rodzaj) from kreatura;
 
 // pkt b
 
-select concat(idKreatury, 'to nazwa' , nazwa) from kreatura;
+select concat(idKreatury, 'to nazwa' , nazwa) from kreatura
+where rodzaj LIKE 'wi%';
 
 // pkt c
 
