@@ -1,0 +1,61 @@
+// zad 1 pkt a
+
+# select sum(waga) from kreatura; <-- suma
+# select count(waga) from kreatura; <-- liczy ile jest rekordkow
+
+select avg(waga) from kreatura;
+
+// pkt b
+
+select rodzaj, avg(waga) as srednia, 
+count(*) as liczba from kreatura
+group by rodzaj;
+
+// pkt c
+
+select rodzaj, avg(YEAR(CURRENT_DATE) - YEAR(dataUr)) as sredni 
+from kreatura group by rodzaj;
+
+// zad 2 pkt a
+
+select rodzaj, sum(ilosc*waga)
+from zasob group by rodzaj;
+
+// pkt b
+
+select nazwa, avg(waga) from zasob 
+where ilosc >= 4 group by nazwa
+having sum(waga) > 10;
+
+// pkt c
+
+select rodzaj, count(distinct(nazwa)) from zasob
+group by rodzaj having count(*) > 1;
+
+// zad 3 pkt a
+
+select k.nazwa, e.ilosc, e.idZasobu
+from kreatura k
+inner join ekwipunek e on k.idKreatury = e.idKreatury;
+
+// pkt b
+
+select k.nazwa, e.ilosc, e.idZasobu, z.idZasobu, z.nazwa
+from kreatura k
+inner join ekwipunek e on k.idKreatury = e.idKreatury
+inner join zasob z on z.idZasobu = e.idZasobu;
+
+// pkt c
+
+select * from kreatura k
+left join ekwipunek e on k.idKreatury = e.idKreatury
+where e.idKreatury is null;
+
+select distinct idKreatury from kreatura
+where idKreatury not in (select idKreatury from ekwipunek where idKreatury is not null);
+
+
+
+
+
+
