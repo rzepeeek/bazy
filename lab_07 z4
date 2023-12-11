@@ -96,6 +96,13 @@ kreatura group by rodzaj) a,
 (select nazwa, dataUr from kreatura) b
 where a.minData = b.dataUr;
 
+// ROZWIAZANIE BEZ UNION ALE TYLKO PO JEDNEJ KREATURZE JEZELI JEDNOCZESNIE JEST NAJSTARSZA I NAJMLODSZA
+
+select a.nazwa, a.rodzaj, a.dataUr from kreatura a,
+(SELECT min(dataUr) min, max(dataUr) max
+from kreatura group by rodzaj) b
+WHERE b.min = a.dataUr OR b.max=a.dataUr;
+
 
 
 
