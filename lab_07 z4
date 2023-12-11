@@ -54,6 +54,48 @@ where e.idKreatury is null;
 select distinct idKreatury from kreatura
 where idKreatury not in (select idKreatury from ekwipunek where idKreatury is not null);
 
+// zad 4 pkt a
+
+select kreatura.nazwa, YEAR(kreatura.dataUr) AS rokUr, zasob.idZasobu, zasob.nazwa from kreatura
+cross join ekwipunek on kreatura.idKreatury = ekwipunek.idKreatury
+JOIN zasob on zasob.idZasobu = ekwipunek.idZasobu HAVING rokUr > 1670 and rokUr < 1680;
+
+// pkt b
+
+select * from kreatura k
+inner join ekwipunek e on k.idkreatury=e.idKreatury
+inner join zasob z on z.idZasobu=e.idZasobu
+where z.rodzaj = 'jedzenie'
+order by k.dataUr desc limit 5;
+
+// pkt c
+
+select concat(k1.nazwa, '-', k2.nazwa) 
+from kreatura k1, kreatura k2
+where k1.idKreatury - k2.idKreatury = 5;
+
+// zad 5 pkt a
+
+select k.rodzaj, avg(e.ilosc * z.waga) from kreatura k
+inner join ekwipunek e on k.idkreatury=e.idKreatury
+inner join zasob z on z.idZasobu=e.idZasobu
+where k.rodzaj not in ('malpa','waz')
+and e.ilosc < 30 group by k.rodzaj;
+
+// pkt b
+
+select 'najmlodsza', a.maxData, b.nazwa, a.rodzaj
+from (select max(dataUr) maxData, rodzaj from kreatura
+group by rodzaj) a,
+(select nazwa, dataUr from kreatura) b
+where a.maxData = b.dataUr
+union
+select 'najstarsza', a.minData, b.nazwa, a.rodzaj
+from (select min(dataUr) minData, rodzaj from
+kreatura group by rodzaj) a,
+(select nazwa, dataUr from kreatura) b
+where a.minData = b.dataUr;
+
 
 
 
