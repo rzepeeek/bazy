@@ -1,0 +1,33 @@
+// zad 1 pkt a
+
+create table kreatura2 AS SELECT * FROM wikingowie.kreatura;
+create table uczestnicy AS SELECT * FROM wikingowie.uczestnicy;
+create table etapy_wyprawy AS SELECT * FROM wikinogwie.etapy_wyprawy;
+create table sektor AS SELECT * FROM wikingowie.sektor;
+create table wyprawa AS SELECT * FROM wikingowie.wyprawa;
+
+// pkt b
+
+select nazwa from kreatura LEFT JOIN uczestnicy on kreatura.idKreatury=uczestnicy.id_uczestnika 
+WHERE uczestnicy.id_uczestnika IS NULL GROUP BY nazwa;
+
+// pkt c
+
+select wyprawa.nazwa, SUM(ekwipunek.ilosc) FROM wyprawa 
+INNER JOIN uczestnicy ON wyprawa.id_wyprawy=uczestnicy.id_wyprawy 
+INNER JOIN ekwipunek ON ekwipunek.idKreatury=uczestnicy.id_uczestnika
+GROUP BY wyprawa.nazwa;
+
+// zad 2 pkt a
+
+select wyprawa.nazwa, COUNT(uczestnicy.id_uczestnika), GROUP_CONCAT(kreatura.nazwa SEPARATOR ',') 
+AS imiona_uczestnikow FROM wyprawa LEFT JOIN uczestnicy ON wyprawa.id_wyprawy=uczestnicy.id_wyprawy LEFT JOIN
+kreatura ON kreatura.idKreatury=uczestnicy.id_uczestnika GROUP BY wyprawa.nazwa;
+
+// pkt b
+
+select ew.kolejnosc, s.nazwa, k.nazwa
+FROM wyprawa w INNER JOIN etapy_wyprawy ew ON w.id_wyprawy=ew.idWyprawy
+INNER JOIN sektor s ON s.id_sektora=ew.sektor
+INNER JOIN kreatura k ON k.idKreatury=w.kierownik
+ORDER BY ew.kolejnosc ASC, w.data_rozpoczecia ASC;
