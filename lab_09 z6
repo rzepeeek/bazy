@@ -2,14 +2,10 @@
 
 DELIMITER //
 create trigger kreatura_before_insert
-before insert on kreatura
-for each row
-begin
-if new.waga <=0
-Then
+before insert on kreatura for each row
+begin if new.waga <=0 Then
 set new.waga = 1;
 End if;
-End;
 
 select * from kreatura;
 insert into kreatura values(66, 'Krysia', 'wiking',  '2030-12-01', '50', '70');
