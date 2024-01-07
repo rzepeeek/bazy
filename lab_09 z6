@@ -16,8 +16,6 @@ nazwa varchar(40),
 data_rozpoczecia date,
 data_zakonczenia date,
 kierownik varchar(50));
-select * from kreatura;
-select * from wyprawa;
 
 DELIMITER //
 create trigger wyprawa_after_delete
